@@ -1,4 +1,5 @@
 const amqp = require('amqplib');
+require('dotenv').config();
 const processBloodRequest = require('./bloodSearchServiceLogic');
 const cron = require('node-cron');
 const sgMail = require('@sendgrid/mail');
