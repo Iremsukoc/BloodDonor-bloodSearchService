@@ -3,7 +3,7 @@ require('dotenv').config();
 const processBloodRequest = require('./bloodSearchServiceLogic');
 const cron = require('node-cron');
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+sgMail.setApiKey(process.env.SG_MAIL_API_KEY);
 const bloodQueue = 'blood_request_queue';
 const express = require('express');
 
