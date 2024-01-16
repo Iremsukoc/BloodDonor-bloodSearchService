@@ -5,12 +5,12 @@ const fetch = require('isomorphic-fetch');
 const getMysqlPool = () => {
   try {
     let pool = mysql.createPool({
-      host: 'localhost',
-      user: 'root',
-      password: 'Tokat6035',
-      database: 'blood-donor',
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
       waitForConnections: true,
-      connectionLimit: 10,
+      connectionLimit: process.env.DB_CONNECTION_LIMIT || 10,
       queueLimit: 0
     });
 
