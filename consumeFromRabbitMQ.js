@@ -9,7 +9,26 @@ const express = require('express');
 
 const app = express();
 const port = 1012;
+const cors = require('cors');
 
+
+const allowedOrigins = [
+  'https://blooddonor-bloodsearchservice-iremsu.onrender.com',
+  'https://blooddonor-api-gateway-iremsu.onrender.com'
+];
+
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
 
 const consumeFromRabbitMQ = async (queueName) => {
   try {
